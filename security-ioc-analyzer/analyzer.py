@@ -148,6 +148,31 @@ def classify_ioc(value):
 
 def load_iocs():
 
-    
+    iocs = []
+
+    with DATA_FILE.open("r", encoding="utf-8") as file:
+         for line in file:
+             line = line.strip()
+
+             if not line:
+                continue
+
+             parts = line.split("|", 2)
+
+             if len(parts) != 3:
+                continue
+
+             timestamp, ioc_type, value = parts
+
+             ioc = {
+               "timestamp": timestamp,
+                "type": ioc_type,
+                "value": value
+             }
+
+             iocs.append(ioc)
+
+    return iocs
+
 
 
