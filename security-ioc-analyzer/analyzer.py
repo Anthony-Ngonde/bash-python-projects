@@ -239,6 +239,13 @@ def main():
        return add_ioc(sys.argv[2])
 
 
+    elif command == "classify":
+
+         if len(sys.argv) != 3:
+            print("Error: classify requires an IOC")
+            return 1
+
+         return classify_command(sys.argv[2])
 
 
 
