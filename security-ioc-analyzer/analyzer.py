@@ -143,7 +143,8 @@ def classify_ioc(value):
     return "Unknown"
 
 
-#print(classify_ioc(value))
+#ioc_type = classify_ioc(value)
+#print(ioc_type)
 
 
 def load_iocs():
@@ -183,6 +184,26 @@ def save_ioc(ioc_type, value):
          file.write(f"{timestamp}|{ioc_type}|{value}\n")
 
 
+def add_ioc(value):
 
+    value = value.strip()
 
+    ioc_type = classify_ioc(value)
 
+    if ioc_type == "Unknown":
+       print("INVALID. Enter a valid IOC")
+       return 1
+
+    iocs = load_iocs()
+
+    for ioc in iocs:
+        if ioc["value"].lower() == value.lower():
+           print("IOC already exists")
+           return 1
+
+    save_ioc(ioc_type, value)
+
+    print("IOC added successfully")
+    print(f"Type: {ioc_type}")
+    print(f"Value: {value}")
+    return 0
