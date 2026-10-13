@@ -175,4 +175,14 @@ def load_iocs():
     return iocs
 
 
+def save_ioc(ioc_type, value):
+
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:S")
+
+    with DATA_FILE.open("a", encoding="utf-8") as file:
+         file.write(f"{timestamp}|{ioc_type}|{value}\n")
+
+
+
+
 
