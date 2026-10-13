@@ -2,28 +2,28 @@ import ipaddress
 import re
 
 
-#value = input("\nEnter IOC: ").strip()
+value = input("\nEnter IOC: ").strip()
 
 
-def validate_ipv4():
+def validate_ipv4(value):
 
-    value = input("\nEnter IP Address: ").strip()
+#    value = input("\nEnter IP Address: ").strip()
 
     try:
        ip = ipaddress.ip_address(value)
 
 
        if ip.version == 4:
-          print("Valid IP Address")
+#          print("Valid IP Address")
           return True
 
     except ValueError:
-           print("Invalid IP Address")
+#           print("Invalid IP Address")
            pass
 
     return False
 
-validate_ipv4()
+#validate_ipv4()
 
 
 def validate_email(value):
