@@ -2,24 +2,28 @@ import ipaddress
 import re
 
 
-def validate_ipv4(value):
+#value = input("\nEnter IOC: ").strip()
 
-#    value = input("\nEnter IP Address: ").strip()
 
-    ip = ipaddress.ip_address(value)
+def validate_ipv4():
+
+    value = input("\nEnter IP Address: ").strip()
 
     try:
+       ip = ipaddress.ip_address(value)
+
+
        if ip.version == 4:
-#          print("Valid IP Address")
+          print("Valid IP Address")
           return True
 
     except ValueError:
-#           print("Invalid IP Address")
+           print("Invalid IP Address")
            pass
 
     return False
 
-#validate_ipv4()
+validate_ipv4()
 
 
 def validate_email(value):
@@ -108,3 +112,29 @@ def validate_sha256(value):
 
 
 
+def classify_ioc(value):
+
+    value = value.strip()
+
+    if not value:
+       return "Unknown"
+
+    if validate_ipv4(value):
+       return "IPv4"
+
+    if validate_email(value):
+       return "Email"
+
+    if validate_domain(value):
+       return "Domain"
+
+    if validate_md5(value):
+       return "MD5"
+
+    if validate_sha256(value):
+       return "SHA256"
+
+    return "Unknown"
+
+
+#print(classify_ioc(value))
