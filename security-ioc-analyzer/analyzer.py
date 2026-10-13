@@ -32,10 +32,50 @@ def validate_email():
 
 
 #if validate_email():
-   print("Valid Email")
+#   print("Valid Email")
 
 #else:
 #    print("Invalid Email")
+
+def validate_domain():
+
+#    value = input("\nEnter domain: ").strip()
+
+    if len(value) > 253:
+#       print("Invalid Domain")
+       return False
+
+    if value.endswith("."):
+       value = value[:-1]
+
+    labels = value.split(".")
+
+    if len(labels) < 2:
+#       print("Invalid Domain")
+       return False
+
+    for label in labels:
+
+        if not label:
+#           print("Invalid Domain")
+           return False
+
+        if len(label) > 63:
+#           print("Invalid Domain")
+           return False
+
+        if label.startswith("-") or label.endswith("-"):
+#           print("Invalid Domain")
+           return False
+
+        if not re.fullmatch(r"[A-Za-z0-9-]+", label):
+#           print("Invalid Domain")
+           return False
+
+#    print("Valid Domain")
+    return True
+
+#validate_domain()
 
 
 
