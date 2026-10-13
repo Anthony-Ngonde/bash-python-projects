@@ -211,6 +211,17 @@ def add_ioc(value):
     return 0
 
 
+def classify_command(value):
+
+    ioc_type = classify_ioc(value)
+
+    print(ioc_type)
+
+    if ioc_type == "Unknown":
+       return 1
+
+    return 0
+
 
 def main():
 
@@ -226,6 +237,8 @@ def main():
           return 1
 
        return add_ioc(sys.argv[2])
+
+
 
 
 
