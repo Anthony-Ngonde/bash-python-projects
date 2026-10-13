@@ -11,6 +11,11 @@ PYTHON_SCRIPT="$BASE_DIR/analyzer.py"
 
 add_ioc() {
 
+echo "=========="
+echo "Add IOC"
+echo "=========="
+
+
 echo
 read -p "Enter IOC: " ioc
 
@@ -29,5 +34,111 @@ python3 "$PYTHON_SCRIPT" add "$ioc"
 }
 
 
-add_ioc
+#add_ioc
 
+
+search_ioc() {
+
+echo "=============="
+echo "Search IOC"
+echo "============="
+
+echo
+read -p "Enter IOC: " ioc
+
+
+if [[ -z "$ioc"  ]]
+   then
+     echo "Error. IOC cannot be empty"
+     return
+
+fi
+
+
+python3 "$PYTHON_SCRIPT" search "$ioc"
+
+
+}
+
+#search_ioc
+
+
+
+classify_ioc() {
+
+echo "============="
+echo "Classify IOC"
+echo "============="
+
+
+echo
+read -p "Enter IOC: " ioc
+
+if [[ -z "$ioc"  ]]
+   then
+     echo "Error. IOC cannot be empty"
+     return
+
+fi
+
+
+echo
+echo -n "Classification: "
+
+python3 "$PYTHON_SCRIPT" classify "$ioc"
+
+
+}
+
+
+
+
+while true
+do
+
+
+echo
+echo "1.Add IOC"
+echo "2.Search IOC"
+echo "3.Classify IOC"
+echo "4.Exit"
+
+
+echo
+read -p "Enter your choice: " choice
+
+
+case $choice in
+
+1)
+ add_ioc
+ ;;
+
+2)
+ search_ioc
+ ;;
+
+3)
+ classify_ioc
+ ;;
+
+4)
+ echo
+ echo "Exiting..."
+ exit 0
+ ;;
+
+*)
+ echo
+ echo "Invalid choice"
+ ;;
+
+esac
+
+
+echo
+read -p "Press Enter to Continue..."
+
+
+
+done
