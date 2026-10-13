@@ -253,6 +253,32 @@ def search_ioc(value):
         return 0
 
 
+def list_iocs():
+
+    iocs = load_iocs()
+
+    if not iocs:
+       print("No stored IOCs available")
+       return 0
+
+    print("\n===========")
+    print("STORED IOCs")
+    print("=============")
+
+    print(f"{'TYPE':<10} {'VALUE':<45} {'TIMESTAMP'}")
+
+    for ioc in iocs:
+        print(
+          f"{ioc['type']:<10}"
+          f"{ioc['value']:<45}"
+          f"{ioc['timestamp']}"
+        )
+
+    return 0
+
+
+
+
 
 def main():
 
