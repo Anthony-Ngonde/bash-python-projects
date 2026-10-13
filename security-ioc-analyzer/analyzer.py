@@ -313,6 +313,15 @@ def main():
          return search_ioc(sys.argv[2])
 
 
+    elif command == "list":
+
+         if len(sys.argv) != 2:
+            print("Error: list does not require an IOC")
+            return 1
+
+         return list_iocs()
+
+
 if __name__ == "__main__":
      sys.exit(main())
 
