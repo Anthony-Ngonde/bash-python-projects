@@ -277,6 +277,43 @@ def list_iocs():
     return 0
 
 
+def count_ioc_types():
+
+    iocs = load_iocs()
+
+    counts = {
+      "IPv4": 0,
+      "Email": 0,
+      "Domain": 0,
+      "MD5": 0,
+      "SHA256": 0
+
+    }
+
+    for ioc in iocs:
+        ioc_types = ioc["type"]
+
+        if ioc_type in counts:
+           counts[ioc_type] += 1
+
+    total = len(iocs)
+
+    print("\n==============")
+    print("IOC Statistics")
+    print("================")
+
+    print(f"IPv4: {counts['IPv4']}")
+    print(f"Email: {counts['Email']}")
+    print(f"Domain: {counts['Domain']}")
+    print(f"MD5: {counts['MD5']}")
+    print(f"SHA256: {counts['SHA256']}")
+    print("-----------------------------")
+    print("Total: {total}")
+
+    return 0
+
+
+
 
 
 
