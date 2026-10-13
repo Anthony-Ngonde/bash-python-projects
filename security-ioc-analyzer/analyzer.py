@@ -1,6 +1,8 @@
 import ipaddress
 import re
 from pathlib import Path
+import sys
+from datetime import datetime
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -207,3 +209,26 @@ def add_ioc(value):
     print(f"Type: {ioc_type}")
     print(f"Value: {value}")
     return 0
+
+
+
+def main():
+
+    if len(sys.argv) < 2:
+       return 1
+
+    command = sys.argv[1]
+
+    if command == "add":
+
+       if len(sys.argv) != 3:
+          print("Error: add requires an IOC")
+          return 1
+
+       return add_ioc(sys.argv[2])
+
+
+
+if __name__ == "__main__":
+     sys.exit(main())
+
