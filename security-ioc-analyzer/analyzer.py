@@ -91,3 +91,17 @@ def validate_md5():
 #else:
 #    print("Invalid MD5")
 
+
+
+def validate_sha256():
+
+#    value = input("\nEnter SHA256: ").strip()
+
+    return re.fullmatch(r"[A-Fa-f0-9]{64}", value) is not None
+
+
+#if validate_sha256():
+#   print("Valid SHA256")
+
+#else:
+#    print("Invalid SHA256")
