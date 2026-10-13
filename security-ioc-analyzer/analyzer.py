@@ -439,8 +439,9 @@ def main():
 
          return generate_report()
 
-
-
+    else:
+        print(f"Unknown command: {command}")
+        return 1
 
 
 
