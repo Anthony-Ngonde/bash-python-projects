@@ -291,7 +291,7 @@ def count_ioc_types():
     }
 
     for ioc in iocs:
-        ioc_types = ioc["type"]
+        ioc_type = ioc["type"]
 
         if ioc_type in counts:
            counts[ioc_type] += 1
@@ -308,7 +308,7 @@ def count_ioc_types():
     print(f"MD5: {counts['MD5']}")
     print(f"SHA256: {counts['SHA256']}")
     print("-----------------------------")
-    print("Total: {total}")
+    print(f"Total: {total}")
 
     return 0
 
@@ -357,6 +357,20 @@ def main():
             return 1
 
          return list_iocs()
+
+
+    elif command == "count":
+
+         if len(sys.argv) != 2:
+            print("Error: count does not require an IOC")
+            return 1
+
+         return count_ioc_types()
+
+
+
+
+
 
 
 if __name__ == "__main__":
