@@ -1,0 +1,18 @@
+Python cache files
+
+pycache/
+*.py[cod]
+
+
+Virtual environments
+
+.venv/
+venv/
+
+Generated reports
+
+reports/*
+
+Keep the reports directory in Git
+
+!reports/.gitkeep
