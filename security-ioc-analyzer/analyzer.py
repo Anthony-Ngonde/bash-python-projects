@@ -223,6 +223,37 @@ def classify_command(value):
     return 0
 
 
+
+def search_ioc(value):
+
+    value = value.strip()
+
+    iocs = load_iocs
+
+    matches = []
+
+    for ioc in iocs:
+        if ioc["value"].lower == value.lower():
+           matches.append(ioc)
+
+    if not matches:
+       print("No matching IOCs found")
+       return 1
+
+    print("\n=============")
+    print("Search Results")
+    print("===============")
+
+    for ioc in matches:
+
+        print(f"Timestamp: {ioc['timestamp']}")
+        print(f"Type: {ioc['ioc_type']}")
+        print(f"Value: {ioc['value']}")
+        print("--------------------------------")
+        return 0
+
+
+
 def main():
 
     if len(sys.argv) < 2:
@@ -246,6 +277,7 @@ def main():
             return 1
 
          return classify_command(sys.argv[2])
+
 
 
 
