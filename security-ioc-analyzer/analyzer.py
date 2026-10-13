@@ -228,12 +228,12 @@ def search_ioc(value):
 
     value = value.strip()
 
-    iocs = load_iocs
+    iocs = load_iocs()
 
     matches = []
 
     for ioc in iocs:
-        if ioc["value"].lower == value.lower():
+        if ioc["value"].lower() == value.lower():
            matches.append(ioc)
 
     if not matches:
@@ -247,7 +247,7 @@ def search_ioc(value):
     for ioc in matches:
 
         print(f"Timestamp: {ioc['timestamp']}")
-        print(f"Type: {ioc['ioc_type']}")
+        print(f"Type: {ioc['type']}")
         print(f"Value: {ioc['value']}")
         print("--------------------------------")
         return 0
@@ -278,7 +278,13 @@ def main():
 
          return classify_command(sys.argv[2])
 
+    elif command == "search":
 
+         if len(sys.argv) != 3:
+            print("Error: search requires an IOC")
+            return 1
+
+         return search_ioc(sys.argv[2])
 
 
 if __name__ == "__main__":
