@@ -2,7 +2,7 @@ import ipaddress
 import re
 
 
-def validate_ipv4():
+def validate_ipv4(value):
 
 #    value = input("\nEnter IP Address: ").strip()
 
@@ -22,7 +22,7 @@ def validate_ipv4():
 #validate_ipv4()
 
 
-def validate_email():
+def validate_email(value):
 
 #    value = input("\nEnter Email Address: ").strip()
 
@@ -37,7 +37,7 @@ def validate_email():
 #else:
 #    print("Invalid Email")
 
-def validate_domain():
+def validate_domain(value):
 
 #    value = input("\nEnter domain: ").strip()
 
@@ -78,7 +78,7 @@ def validate_domain():
 #validate_domain()
 
 
-def validate_md5():
+def validate_md5(value):
 
 #    value = input("\nEnter MD5: ").strip()
 
@@ -93,7 +93,7 @@ def validate_md5():
 
 
 
-def validate_sha256():
+def validate_sha256(value):
 
 #    value = input("\nEnter SHA256: ").strip()
 
@@ -105,3 +105,6 @@ def validate_sha256():
 
 #else:
 #    print("Invalid SHA256")
+
+
+
