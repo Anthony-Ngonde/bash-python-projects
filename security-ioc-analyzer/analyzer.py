@@ -1,8 +1,14 @@
 import ipaddress
 import re
+from pathlib import Path
 
 
-value = input("\nEnter IOC: ").strip()
+BASE_DIR = Path(__file__).resolve().parent
+DATA_FILE = BASE_DIR / "data" / "iocs.txt"
+REPORT_DIR = BASE_DIR / "reports"
+
+
+#value = input("\nEnter IOC: ").strip()
 
 
 def validate_ipv4(value):
@@ -138,3 +144,10 @@ def classify_ioc(value):
 
 
 #print(classify_ioc(value))
+
+
+def load_iocs():
+
+    
+
+
