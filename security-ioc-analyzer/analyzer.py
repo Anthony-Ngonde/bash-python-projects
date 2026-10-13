@@ -313,6 +313,68 @@ def count_ioc_types():
     return 0
 
 
+def generate_report():
+
+    iocs = load_iocs()
+
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+    report_file = REPORT_DIR / f"ioc_report_{timestamp}.txt"
+
+    counts = {
+     "IPv4": 0,
+     "Email": 0,
+     "Domain": 0,
+     "MD5": 0,
+     "SHA256": 0
+    }
+
+    for ioc in iocs:
+        ioc_type = ioc["type"]
+
+        if ioc_type in counts:
+           counts[ioc_type] += 1
+
+
+    with report_file.open("w", encoding="utf-8") as file:
+         file.write("====================\n")
+         file.write("SECURITY IOC REPORT\n")
+         file.write("=====================\n\n")
+
+         file.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+
+         file.write("===============\n")
+         file.write("IOC STATISTICS\n")
+         file.write("=================\n\n")
+
+         file.write(f"IPv4: {counts['IPv4']}\n")
+         file.write(f"Email: {counts['Email']}\n")
+         file.write(f"Domain: {counts['Domain']}\n")
+         file.write(f"MD5: {counts['MD5']}\n")
+         file.write(f"SHA256: {counts['SHA256']}\n")
+         file.write(f"Total: {len(iocs)}\n\n")
+
+
+         file.write("=============\n")
+         file.write("STORED IOCs\n")
+         file.write("==============\n\n")
+
+         if not iocs:
+            print("No stored IOCs available\n")
+            return 1
+
+         else:
+
+             for ioc in iocs:
+                 file.write(
+                       f"Timestamp: {ioc['timestamp']}\n"
+                       f"Type: {ioc['type']}\n"
+                       f"Value: {ioc['value']}\n"
+                       f"{'-' * 40}\n"
+                 )
+
+         print("Report Generated successfully")
+         print(report_file)
 
 
 
@@ -369,10 +431,19 @@ def main():
 
 
 
+    elif command == "report":
+
+         if len(sys.argv) != 2:
+            print("Error: report does not require an IOC")
+            return 1
+
+         return generate_report()
+
+
+
 
 
 
 
 if __name__ == "__main__":
      sys.exit(main())
-
