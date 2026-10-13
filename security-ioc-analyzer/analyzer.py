@@ -78,4 +78,16 @@ def validate_domain():
 #validate_domain()
 
 
+def validate_md5():
+
+#    value = input("\nEnter MD5: ").strip()
+
+    return re.fullmatch(r"[A-Fa-f0-9]{32}", value) is not None
+
+
+#if validate_md5():
+#   print("Valid MD5")
+
+#else:
+#    print("Invalid MD5")
 
