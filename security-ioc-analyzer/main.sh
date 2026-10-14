@@ -91,6 +91,22 @@ python3 "$PYTHON_SCRIPT" classify "$ioc"
 }
 
 
+list_iocs() {
+
+python3 "$PYTHON_SCRIPT" list
+
+
+}
+
+
+count_iocs() {
+
+
+python3 "$PYTHON_SCRIPT" count
+
+
+}
+
 
 
 while true
@@ -101,7 +117,9 @@ echo
 echo "1.Add IOC"
 echo "2.Search IOC"
 echo "3.Classify IOC"
-echo "4.Exit"
+echo "4.List IOC"
+echo "5.Count IOC"
+echo "6.Exit"
 
 
 echo
@@ -123,6 +141,14 @@ case $choice in
  ;;
 
 4)
+ list_iocs
+ ;;
+
+5)
+ count_iocs
+ ;;
+
+6)
  echo
  echo "Exiting..."
  exit 0
